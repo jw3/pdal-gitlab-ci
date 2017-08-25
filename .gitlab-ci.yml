@@ -44,7 +44,6 @@ cpack-deb:
     - cpack -D CPACK_DEBIAN_PACKAGE_MAINTAINER=wassj -G DEB
   tags:
     - matlab
-    - containers
   artifacts:
     paths:
       - "*.deb"
