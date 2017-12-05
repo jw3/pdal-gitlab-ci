@@ -1,4 +1,4 @@
-image: pdal/dependencies
+image: jwiii/pdal:dependencies
 
 stages:
   - package
