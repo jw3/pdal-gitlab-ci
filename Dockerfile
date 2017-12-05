@@ -1,4 +1,4 @@
-FROM pdal/dependencies
+FROM jwiii/pdal:dependencies
 
 COPY *.deb /tmp
 
