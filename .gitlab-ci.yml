@@ -38,8 +38,9 @@ cpack-deb:
         \ #
         \ # PDAL Matlab
         \ #
+        -DMatlab_ROOT_DIR=$MATLAB_HOME \
         -DBUILD_PLUGIN_MATLAB=ON \
-        -DMATLAB_FIND_DEBUG=ON .
+        -DMATLAB_FIND_DEBUG=ON . \
     - make -j7
     - cpack -D CPACK_DEBIAN_PACKAGE_MAINTAINER=wassj -G DEB
   tags:
