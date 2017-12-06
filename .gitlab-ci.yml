@@ -3,6 +3,7 @@ image: jwiii/pdal:dependencies
 stages:
   - package
   - dockerize
+  - test
 
 cpack-deb:
   stage: package
@@ -72,3 +73,27 @@ dockerize-branch:
     - branches
   except:
     - master
+
+test-master:
+  image: $CI_REGISTRY_IMAGE
+  stage: test
+  script:
+    - matlab -debug -nosplash -nojvm -nodesktop -nodisplay -r "version, exit"
+    - pdal --drivers | grep matlab
+  only:
+    - master
+  tags:
+    - matlab
+
+test-branch:
+  image: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+  stage: test
+  script:
+    - matlab -debug -nosplash -nojvm -nodesktop -nodisplay -r "version, exit"
+    - pdal --drivers | grep matlab
+  only:
+    - branches
+  except:
+    - master
+  tags:
+    - matlab
