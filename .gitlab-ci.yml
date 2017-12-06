@@ -8,39 +8,30 @@ cpack-deb:
   stage: package
   script:
     - >
-        cmake \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr/local \
-        \ #
-        \ # PDAL Configuration
-        \ #
-        -DBUILD_PLUGIN_PYTHON=OFF \
-        -DWITH_LAZPERF=OFF \
-        -DWITH_LASZIP=OFF \
-        -DWITH_PDAL_JNI=OFF \
-        -DWITH_TESTS=ON \
-        -DENABLE_CTEST=OFF \
-        \ #
-        \ # PDAL Plugins
-        \ #
-        -DBUILD_PLUGIN_CPD=OFF \
-        -DBUILD_PLUGIN_MBIO=OFF \
-        -DBUILD_PLUGIN_GREYHOUND=OFF \
-        -DBUILD_PLUGIN_HEXBIN=OFF \
-        -DBUILD_PLUGIN_ICEBRIDGE=OFF \
-        -DBUILD_PLUGIN_MRSID=OFF \
-        -DBUILD_PLUGIN_NITF=OFF \
-        -DBUILD_PLUGIN_OCI=OFF \
-        -DBUILD_PLUGIN_PCL=OFF \
-        -DBUILD_PLUGIN_PGPOINTCLOUD=OFF \
-        -DBUILD_PLUGIN_SQLITE=OFF \
-        -DBUILD_PLUGIN_RIVLIB=OFF \
-        \ #
-        \ # PDAL Matlab
-        \ #
-        -DMatlab_ROOT_DIR=$MATLAB_HOME \
-        -DBUILD_PLUGIN_MATLAB=ON \
-        -DMATLAB_FIND_DEBUG=ON .
+        cmake .
+        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_INSTALL_PREFIX=/usr/local
+        -DBUILD_PLUGIN_PYTHON=OFF
+        -DWITH_LAZPERF=OFF
+        -DWITH_LASZIP=OFF
+        -DWITH_PDAL_JNI=OFF
+        -DWITH_TESTS=ON
+        -DENABLE_CTEST=OFF
+        -DBUILD_PLUGIN_CPD=OFF
+        -DBUILD_PLUGIN_MBIO=OFF
+        -DBUILD_PLUGIN_GREYHOUND=OFF
+        -DBUILD_PLUGIN_HEXBIN=OFF
+        -DBUILD_PLUGIN_ICEBRIDGE=OFF
+        -DBUILD_PLUGIN_MRSID=OFF
+        -DBUILD_PLUGIN_NITF=OFF
+        -DBUILD_PLUGIN_OCI=OFF
+        -DBUILD_PLUGIN_PCL=OFF
+        -DBUILD_PLUGIN_PGPOINTCLOUD=OFF
+        -DBUILD_PLUGIN_SQLITE=OFF
+        -DBUILD_PLUGIN_RIVLIB=OFF
+        -DMatlab_ROOT_DIR=$MATLAB_HOME
+        -DBUILD_PLUGIN_MATLAB=ON
+        -DMATLAB_FIND_DEBUG=ON
     - make -j7
     - cpack -D CPACK_DEBIAN_PACKAGE_MAINTAINER=wassj -G DEB
   tags:
